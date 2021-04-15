@@ -5,7 +5,7 @@ document.getElementById("download").addEventListener("click", function(e){
         return
     }
     document.getElementById("download").classList.add("is-loading")
-    fetch('https://yt-videos-downloader.herokuapp.com/getVideoInfo?url="+url).then(function(res){return res.json()}).then(function(data){
+    fetch("https://yt-videos-downloader.herokuapp.com/getVideoInfo?url="+url).then(function(res){return res.json()}).then(function(data){
         document.getElementById("download").classList.remove("is-loading")
         document.getElementById("details").classList.remove("is-hidden")
         document.getElementById("yt-video-title").innerText = data.videoDetails.title
