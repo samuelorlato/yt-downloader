@@ -19,7 +19,7 @@ app.get("/getVideoInfo", async (req, res) => {
 
 app.get("/downloadMP3", (req, res) => {
     const url = req.query.url
-    const videoTitle = "video"
+    const videoTitle = "audio"
     res.header("Content-Disposition", `attachment;\ filename="${videoTitle}.mp3"`)
     ytdl(url)
         .pipe(res)
