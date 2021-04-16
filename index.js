@@ -1,11 +1,13 @@
 const express = require("express")
 const app = express()
+const cors = require("cors")
 
 const ytdl = require("ytdl-core")
 const axios = require("axios")
 const fs = require("fs")
 
 app.use(express.static("public"))
+app.use(cors())
 
 app.get("/", (req, res) => res.sendFile(__dirname + "public/index.html"))
 
@@ -17,7 +19,7 @@ app.get("/getVideoInfo", async (req, res) => {
 
 app.get("/downloadMP3", (req, res) => {
     const url = req.query.url
-    const videoTitle = "video"
+    const videoTitle = "audio"
     res.header("Content-Disposition", `attachment;\ filename="${videoTitle}.mp3"`)
     ytdl(url)
         .pipe(res)
