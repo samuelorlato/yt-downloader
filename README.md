@@ -1,3 +1,3 @@
 # YT Downloader
 <img src="https://github.com/OrlatoDev/yt-downloader/blob/main/banner.png">
-> A website for download YT videos
+>> A website for download YT videos
