@@ -4,33 +4,43 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    <link rel="stylesheet" href="./output.css">
     <link rel="stylesheet" href="./animation.css">
-    <title>YT Downloader</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet"> 
+    <title>Chumn</title>
 </head>
-<body style="overflow-x: hidden;">
-    <main class="is-flex is-justify-content-center is-align-items-center" style="height: 100vh; width: 100vw;">
-        <div class="box is-flex is-flex-direction-column slide-in-right" id="box">
-            <h1 class="title">YT Downloader</h1>
-            <div class="is-flex is-flex-direction-row">
-                <input type="text" class="input" placeholder="Put a YouTube Video URL: " id="url">
-                <button class="button ml-2 is-info" id="download">Download</button>
+<body class="overflow-hidden bg-darkgray">
+    <main class="flex justify-center items-center w-screen h-screen" id="main">
+        <div class="flex flex-col w-11/12 slide-in-right sm:w-2/3 lg:w-1/2" id="box">
+            <div class="inline-block p-5 mb-3 rounded-lg box bg-gray">
+                <h1 class="text-5xl text-transparent bg-clip-text bg-gradient-to-r from-red via-yellow to-purple">Chumn</h1>
+                <h4 class="pl-0.5 text-lg text-white">The YouTube Downloader</h4>
+            </div>
+            <div class="flex flex-col p-5 mb-3 rounded-lg box bg-gray">
+                <input type="text" class="p-3 mb-3 placeholder-white placeholder-opacity-100 text-white rounded-lg select-text focus:outline-none bg-darkgray selection:bg-gray" placeholder="Put a YouTube Video URL: " id="url">
+                <input type="text" class="p-3 placeholder-white placeholder-opacity-100 text-white rounded-lg select-text focus:outline-none bg-darkgray selection:bg-gray" placeholder="Put the file name: " id="name">
+            </div>
+            <div class="flex flex-col p-5 mb-3 rounded-lg box bg-gray">
+                <button class="p-3 text-white rounded-lg button info bg-darkgray" id="download">
+                    Download
+                </button>
             </div>
         </div>
     </main>
-    <div id="details" class="is-hidden hero is-fullheight is-flex is-justify-content-center is-align-items-center">
-        <div class="is-flex is-justify-content-center is-align-items-center is-flex-direction-column mb-6 has-text-centered">
-            <h2 class="title">Video Title:</h2>
-            <h2 class="subtitle" id="yt-video-title"></h2>
+    <div id="details" class="flex justify-center items-center w-screen h-screen">
+        <div class="flex flex-col content-center items-center mb-6 text-center">
+            <h1 class="text-3xl text-transparent bg-clip-text bg-gradient-to-r from-red via-yellow to-purple">Video Title:</h1>
+            <h2 class="text-white mt-1 mb-3" id="yt-video-title"></h2>
             <iframe id="yt-embed" class="block"></iframe>
-            <div class="is-flex is-flex-direction-row">
-                <div class="select is-medium">
-                    <select id="format-opt">
-                        <option value="MP3">MP3</option>
-                        <option value="MP4">MP4</option>
-                    </select>
-                </div>
-                <button class="button mx-2 is-info is-medium" id="download-video">Download</button>
+            <div class="flex flex-row mt-3">
+                <button class="p-3 text-white rounded-lg button info bg-gray" id="download-mp3">
+                    Download as audio
+                </button>
+                <button class="p-3 ml-3 text-white rounded-lg button info bg-gray" id="download-mp4">
+                    Download as video
+                </button>
             </div>
         </div>
     </div>

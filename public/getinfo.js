@@ -1,13 +1,13 @@
-document.getElementById("download").addEventListener("click", function(e){
-    e.preventDefault()
-    var url = document.getElementById("url").value.trim()
+document.getElementById("download").addEventListener("click", function(){
+    var url = document.getElementById("url").value
     if(url.length < 1){
         return
     }
-    document.getElementById("download").classList.add("is-loading")
+    document.getElementById("download").innerHTML = `Loading...`
     fetch("https://yt-videos-downloader.herokuapp.com/getVideoInfo?url="+url).then(function(res){return res.json()}).then(function(data){
-        document.getElementById("download").classList.remove("is-loading")
-        document.getElementById("details").classList.remove("is-hidden")
+        document.getElementById("download").classList.add("invisible")
+        document.getElementById("details").classList.remove("invisible")
+        document.getElementById("main").classList.add("invisible")
         document.getElementById("yt-video-title").innerText = data.videoDetails.title
         document.getElementById("yt-embed").src = data.videoDetails.embed.iframeUrl
 

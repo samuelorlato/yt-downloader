@@ -3,8 +3,6 @@ const app = express()
 const cors = require("cors")
 
 const ytdl = require("ytdl-core")
-const axios = require("axios")
-const fs = require("fs")
 
 app.use(express.static("public"))
 app.use(cors())
@@ -17,20 +15,22 @@ app.get("/getVideoInfo", async (req, res) => {
     res.status(200).json(info)
 })
 
-app.get("/downloadMP3", (req, res) => {
+app.get("/downloadaudio", (req, res) => {
     const url = req.query.url
-    const videoTitle = "audio"
-    res.header("Content-Disposition", `attachment;\ filename="${videoTitle}.mp3"`)
-    ytdl(url)
-        .pipe(res)
+    const videoTitle = req.query.name
+    res.header("Content-Disposition", `attachment; filename="${videoTitle}"`)
+    ytdl(url, {
+        filter: "audioonly",
+    }).pipe(res)
 })
 
-app.get("/downloadMP4", (req, res) => {
+app.get("/downloadvideo", (req, res) => {
     const url = req.query.url
-    const videoTitle = "video"
-    res.header("Content-Disposition", `attachment;\ filename="${videoTitle}.mp4"`)
-    ytdl(url)
-        .pipe(res)
+    const videoTitle = req.query.name
+    res.header("Content-Disposition", `attachment; filename="${videoTitle}"`)
+    ytdl(url, {
+        format: "mp4",
+    }).pipe(res)
 })
 
-app.listen(process.env.PORT, () => console.log("Server is running"))
+app.listen(5500, () => console.log("Server is running"))

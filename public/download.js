@@ -1,11 +1,12 @@
-document.getElementById("download-video").addEventListener("click", function(e){
+document.getElementById("download").addEventListener("click", function(){
     var url = document.getElementById("url").value
-    e.preventDefault()
-    var select = document.getElementById("format-opt")
-    if(select.options[select.selectedIndex].text === "MP3"){
-        window.open("https://yt-videos-downloader.herokuapp.com/downloadMP3?url="+url)
+    var name = document.getElementById("name").value
+
+    document.getElementById("download-mp3").onclick = function(){
+        window.open("http://localhost:5500/downloadaudio?url="+url+"&name="+name)
     }
-    else if(select.options[select.selectedIndex].text === "MP4"){
-        window.open("https://yt-videos-downloader.herokuapp.com/downloadMP4?url="+url)
+    
+    document.getElementById("download-mp4").onclick = function(){
+        window.open("http://localhost:5500/downloadvideo?url="+url+"&name="+name)
     }
 })
